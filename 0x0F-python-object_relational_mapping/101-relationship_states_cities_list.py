@@ -2,7 +2,9 @@
 # Lists all States and corresponding Cities in the database hbtn_0e_101_usa.
 # Usage: ./101-relationship_states_cities_list.py <mysql username> /
 #                                                 <mysql password> /
-#                                                 <database name>
+#  
+"""lists all states from the database hbtn_0e_0_usa
+"""                                               <database name>
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
