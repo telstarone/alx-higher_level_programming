@@ -4,22 +4,17 @@
 Usage: ./3-error_code.py <URL>
   - Handles HTTP errors.
 """
-import urllib.request
-import urllib.error
 import sys
+import urllib.error
+import urllib.request
 
-# Take the URL from the command line argument
-url = sys.argv[1]
 
-try:
-    # Send a request to the URL
-    with urllib.request.urlopen(url) as response:
-        # Read the body of the response and decode it using utf-8
-        response_body = response.read().decode('utf-8')
-        
-        # Display the body of the response
-        print(response_body)
+if __name__ == "__main__":
+    url = sys.argv[1]
 
-except urllib.error.HTTPError as e:
-    # If an HTTPError occurs, print "Error code: " followed by the HTTP status code
-    print("Error code: " + str(e.code))
+    request = urllib.request.Request(url)
+    try:
+        with urllib.request.urlopen(request) as response:
+            print(response.read().decode("ascii"))
+    except urllib.error.HTTPError as e:
+        print("Error code: {}".format(e.code))
